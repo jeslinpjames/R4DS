@@ -16,17 +16,32 @@ read_student_records <- function() {
   
   while(TRUE) {
     name <- readline(prompt = "Enter student name (or type 'done' to finish): ")
-    if (tolower(name) == "done") {
+    name <- trimws(tolower(name))
+    
+    # Debugging print
+    cat("Entered name:", name, "\n")
+    
+    if (name == "done") {
       break
     }
     
-    age <- as.integer(readline(prompt = "Enter student age: "))
+    age_input <- readline(prompt = "Enter student age: ")
+    age <- as.integer(age_input)
+    
+    # Debugging print
+    cat("Entered age:", age, "\n")
+    
     if (!validate_age(age)) {
       cat("Invalid age. Please enter a positive integer.\n")
       next
     }
     
     grade <- readline(prompt = "Enter student grade (A, B, C, D, F): ")
+    grade <- trimws(toupper(grade))
+    
+    # Debugging print
+    cat("Entered grade:", grade, "\n")
+    
     if (!validate_grade(grade)) {
       cat("Invalid grade. Please enter a valid letter grade (A, B, C, D, F).\n")
       next
