@@ -38,3 +38,20 @@ legend("bottomright",legend=mylabel, fill=colour)
 
 
 
+#Bar Charts
+x <- c("A","B","C","D")
+y <- c(2,4,6,8)
+barplot(y,names.arg = x, col =colour)
+
+x <- c("A","B","C","D")
+y <- c(2,4,6,8)
+barplot(y,names.arg = x, col = colour, horiz=TRUE)
+
+
+#Hist
+v <- c(9,13,21,8,36,22,12,41,31,33,19)
+hist(v,xlab="Weight",col ="red",border ="blue")
+hist(v,xlab="Weight",col ="green",border = "red", xlim = c(0,40), ylim = c(0,50),breaks = 5)
+
+input <- mtcars[,c('mpg','cyl')]
+boxplot(mpg ~ cyl,data=mtcars,xlab="Number of Cylinders",main ="Milage Data")
