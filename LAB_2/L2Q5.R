@@ -20,13 +20,17 @@ legend("topright",
 
 # Identify and label outliers
 outliers <- boxplot(mtcars$hp ~ mtcars$gear, plot = FALSE)$out
-outlier_indexes <- which(mtcars$hp %in% outliers)
-
-# Label the outliers on the plot
-text(x = as.numeric(mtcars$gear[outlier_indexes]), 
-     y = mtcars$hp[outlier_indexes], 
-     labels = rownames(mtcars)[outlier_indexes], 
-     pos = 4, col = "red")
+if (length(outliers) > 0) {
+  outlier_indexes <- which(mtcars$hp %in% outliers)
+  
+  # Label the outliers on the plot
+  text(x = as.numeric(mtcars$gear[outlier_indexes]), 
+       y = mtcars$hp[outlier_indexes], 
+       labels = rownames(mtcars)[outlier_indexes], 
+       pos = 4, col = "red")
+} else {
+  message("No outliers found.")
+}
 
 # Close the device (if saving to a file)
 dev.off()
